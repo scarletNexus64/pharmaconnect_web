@@ -1,0 +1,23 @@
+# Django et extensions principales
+Django==5.2.4
+djangorestframework==3.16.0
+django-filter==25.1
+django-cors-headers==4.7.0
+django-jazzmin==3.0.1
+
+# Documentation API
+drf-spectacular==0.28.0
+
+# Base de données
+psycopg2-binary==2.9.9  # Pour PostgreSQL en production
+
+# Gestion des images/fichiers
+Pillow==11.3.0
+
+# Utilitaires
+python-decouple==3.8  # Pour les variables d'environnement
+python-dateutil==2.9.0
+
+# Production
+gunicorn==23.0.0
+whitenoise==6.7.0  # Pour servir les fichiers statiques
