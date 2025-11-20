@@ -452,13 +452,21 @@ class StockEntryViewSet(viewsets.ModelViewSet):
         """Filtrer selon l'utilisateur connecté"""
         queryset = super().get_queryset()
         user = self.request.user
-        
+
         if user.access_level == 'COORDINATION':
             return queryset.filter(organization=user.organization)
         elif user.access_level == 'FACILITY':
             return queryset.filter(project__health_facility=user.health_facility)
-        
+
         return queryset
+
+    def perform_create(self, serializer):
+        """Associer automatiquement l'organisation lors de la création"""
+        # Si l'organisation n'est pas fournie, utiliser celle de l'utilisateur
+        if not serializer.validated_data.get('organization'):
+            serializer.save(organization=self.request.user.organization)
+        else:
+            serializer.save()
 
     @action(detail=False, methods=['get'])
     def reception_report(self, request):

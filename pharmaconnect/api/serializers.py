@@ -181,6 +181,9 @@ class StockEntrySerializer(serializers.ModelSerializer):
         model = StockEntry
         fields = '__all__'
         read_only_fields = ['created_at']
+        extra_kwargs = {
+            'organization': {'required': False}  # Le backend l'assignera automatiquement
+        }
 
 
 class PrescriptionPhotoSerializer(serializers.ModelSerializer):
