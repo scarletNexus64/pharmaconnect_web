@@ -153,7 +153,11 @@ class HealthFacilityViewSet(viewsets.ModelViewSet):
             longitude__isnull=False
         )
         serializer = self.get_serializer(facilities, many=True)
-        return Response(serializer.data)
+        # Retourner une structure cohérente avec le reste de l'API
+        return Response({
+            'count': facilities.count(),
+            'results': serializer.data
+        })
 
 
 class HealthFacilityDistributorViewSet(viewsets.ModelViewSet):
