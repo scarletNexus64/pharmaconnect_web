@@ -234,3 +234,70 @@ admin.site.site_title = "PharmaConnect Admin"
 admin.site.index_title = "Tableau de bord PharmaConnect"
 
 # Configuration simplifiée pour éviter les problèmes de récursion
+
+# ========================================
+# STATISTIQUES PERSONNALISÉES POUR LE TABLEAU DE BORD
+# ========================================
+
+from django.contrib.admin import AdminSite
+from django.utils.timezone import now, timedelta
+
+class PharmaConnectAdminSite(AdminSite):
+    """AdminSite personnalisé avec statistiques en temps réel"""
+
+    def index(self, request, extra_context=None):
+        """Vue personnalisée pour le tableau de bord avec statistiques réelles"""
+        extra_context = extra_context or {}
+
+        # Calculer les statistiques
+        extra_context.update({
+            'medication_count': Medication.objects.filter(is_active=True).count(),
+            'organization_count': Organization.objects.count(),
+            'health_facility_count': HealthFacility.objects.count(),
+            'active_project_count': Project.objects.filter(
+                start_date__lte=now(),
+                end_date__gte=now()
+            ).count(),
+            'dispensation_count': Dispensation.objects.filter(
+                dispensation_date__gte=now() - timedelta(days=30)
+            ).count(),
+            'inventory_count': Inventory.objects.filter(
+                inventory_date__gte=now() - timedelta(days=30)
+            ).count(),
+            'active_user_count': User.objects.filter(is_active=True).count(),
+            'active_alert_count': Alert.objects.filter(is_active=True).count(),
+        })
+
+        return super().index(request, extra_context)
+
+# Créer une instance du site admin personnalisé
+# pharma_admin_site = PharmaConnectAdminSite(name='pharma_admin')
+
+# Note: Pour utiliser le site personnalisé, décommentez la ligne ci-dessus
+# et enregistrez vos modèles avec pharma_admin_site.register() au lieu de admin.site.register()
+# Pour le moment, on injecte juste les statistiques via un contexte processor
+
+from django.template import RequestContext
+
+def admin_statistics(request):
+    """Context processor pour injecter les statistiques dans le template admin"""
+    if not request.path.startswith('/admin'):
+        return {}
+
+    return {
+        'medication_count': Medication.objects.filter(is_active=True).count(),
+        'organization_count': Organization.objects.count(),
+        'health_facility_count': HealthFacility.objects.count(),
+        'active_project_count': Project.objects.filter(
+            start_date__lte=now(),
+            end_date__gte=now()
+        ).count(),
+        'dispensation_count': Dispensation.objects.filter(
+            dispensation_date__gte=now() - timedelta(days=30)
+        ).count(),
+        'inventory_count': Inventory.objects.filter(
+            inventory_date__gte=now() - timedelta(days=30)
+        ).count(),
+        'active_user_count': User.objects.filter(is_active=True).count(),
+        'active_alert_count': Alert.objects.filter(is_active=True).count(),
+    }

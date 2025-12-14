@@ -1,144 +1,199 @@
 {% extends "admin/index.html" %}
-{% load static %}
+{% load i18n static %}
 
 {% block extrahead %}
-    {{ block.super }}
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
+{{ block.super }}
+<style>
+    /* Styles pour les cartes de statistiques */
+    .dashboard-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .stat-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 0.5rem;
+        padding: 1.5rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .stat-card:hover {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        transform: translateY(-2px);
+    }
+
+    .stat-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+    }
+
+    .stat-card.stat-primary::before { background: #007bff; }
+    .stat-card.stat-success::before { background: #28a745; }
+    .stat-card.stat-info::before { background: #17a2b8; }
+    .stat-card.stat-warning::before { background: #ffc107; }
+    .stat-card.stat-danger::before { background: #dc3545; }
+    .stat-card.stat-secondary::before { background: #6c757d; }
+
+    .stat-card-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .stat-card-info h3 {
+        color: #6c757d;
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin: 0 0 0.5rem 0;
+    }
+
+    .stat-card-info .stat-value {
+        color: #212529;
+        font-size: 2.25rem;
+        font-weight: 700;
+        margin: 0;
+        line-height: 1;
+    }
+
+    .stat-card-icon {
+        font-size: 3rem;
+        opacity: 0.2;
+    }
+
+    .stat-card.stat-primary .stat-card-icon { color: #007bff; }
+    .stat-card.stat-success .stat-card-icon { color: #28a745; }
+    .stat-card.stat-info .stat-card-icon { color: #17a2b8; }
+    .stat-card.stat-warning .stat-card-icon { color: #ffc107; }
+    .stat-card.stat-danger .stat-card-icon { color: #dc3545; }
+    .stat-card.stat-secondary .stat-card-icon { color: #6c757d; }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
         .dashboard-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 1fr;
             gap: 1rem;
-            margin-bottom: 2rem;
         }
+
         .stat-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+        }
+
+        .stat-card-info .stat-value {
+            font-size: 1.75rem;
+        }
+
+        .stat-card-icon {
+            font-size: 2.5rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .stat-card-content {
+            flex-direction: column;
             text-align: center;
         }
-        .stat-card.alert {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+
+        .stat-card-icon {
+            margin-top: 1rem;
         }
-        .stat-card.success {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-        .stat-card.warning {
-            background: linear-gradient(135deg, #fdbb2d 0%, #22c1c3 100%);
-        }
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-        .chart-container {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin: 1rem 0;
-        }
-    </style>
+    }
+</style>
 {% endblock %}
 
 {% block content %}
-    <div class="dashboard-stats">
-        <div class="stat-card">
-            <div class="stat-number" id="total-organizations">-</div>
-            <div class="stat-label">📍 Organisations</div>
-        </div>
-        <div class="stat-card success">
-            <div class="stat-number" id="total-projects">-</div>
-            <div class="stat-label">🎯 Projets Actifs</div>
-        </div>
-        <div class="stat-card warning">
-            <div class="stat-number" id="total-medications">-</div>
-            <div class="stat-label">💊 Médicaments</div>
-        </div>
-        <div class="stat-card alert">
-            <div class="stat-number" id="active-alerts">-</div>
-            <div class="stat-label">🚨 Alertes Actives</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-number" id="recent-dispensations">-</div>
-            <div class="stat-label">🏥 Dispensations (7j)</div>
-        </div>
-        <div class="stat-card success">
-            <div class="stat-number" id="stock-entries">-</div>
-            <div class="stat-label">📦 Entrées ce mois</div>
-        </div>
-        <div class="stat-card alert">
-            <div class="stat-number" id="expired-medications">-</div>
-            <div class="stat-label">⚠️ Produits expirés</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-number" id="total-users">-</div>
-            <div class="stat-label">👥 Utilisateurs</div>
+<div class="dashboard-stats">
+    <div class="stat-card stat-primary">
+        <div class="stat-card-content">
+            <div class="stat-card-info">
+                <h3>{% trans 'Médicaments' %}</h3>
+                <p class="stat-value">{{ medication_count|default:0 }}</p>
+            </div>
+            <i class="fas fa-pills stat-card-icon"></i>
         </div>
     </div>
 
-    <div class="chart-container">
-        <h3>📊 Répartition des projets par organisation</h3>
-        <canvas id="organizationChart" width="400" height="200"></canvas>
+    <div class="stat-card stat-success">
+        <div class="stat-card-content">
+            <div class="stat-card-info">
+                <h3>{% trans 'Organisations' %}</h3>
+                <p class="stat-value">{{ organization_count|default:0 }}</p>
+            </div>
+            <i class="fas fa-building stat-card-icon"></i>
+        </div>
     </div>
 
-    {{ block.super }}
+    <div class="stat-card stat-info">
+        <div class="stat-card-content">
+            <div class="stat-card-info">
+                <h3>{% trans 'Formations Sanitaires' %}</h3>
+                <p class="stat-value">{{ health_facility_count|default:0 }}</p>
+            </div>
+            <i class="fas fa-hospital stat-card-icon"></i>
+        </div>
+    </div>
 
-    <script>
-        // Simuler des données pour la démonstration
-        document.getElementById('total-organizations').textContent = '3';
-        document.getElementById('total-projects').textContent = '8';
-        document.getElementById('total-medications').textContent = '245';
-        document.getElementById('total-users').textContent = '12';
-        document.getElementById('active-alerts').textContent = '2';
-        document.getElementById('recent-dispensations').textContent = '56';
-        document.getElementById('stock-entries').textContent = '15';
-        document.getElementById('expired-medications').textContent = '3';
+    <div class="stat-card stat-warning">
+        <div class="stat-card-content">
+            <div class="stat-card-info">
+                <h3>{% trans 'Projets Actifs' %}</h3>
+                <p class="stat-value">{{ active_project_count|default:0 }}</p>
+            </div>
+            <i class="fas fa-project-diagram stat-card-icon"></i>
+        </div>
+    </div>
 
-        // Créer un graphique exemple
-        const ctx = document.getElementById('organizationChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Médecins du Monde', 'MSF', 'Expertise France'],
-                datasets: [{
-                    label: 'Nombre de projets',
-                    data: [3, 2, 3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.8)',
-                        'rgba(54, 162, 235, 0.8)',
-                        'rgba(255, 205, 86, 0.8)',
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 205, 86, 1)',
-                    ],
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            stepSize: 1
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                }
-            }
-        });
-    </script>
+    <div class="stat-card stat-danger">
+        <div class="stat-card-content">
+            <div class="stat-card-info">
+                <h3>{% trans 'Dispensations (30j)' %}</h3>
+                <p class="stat-value">{{ dispensation_count|default:0 }}</p>
+            </div>
+            <i class="fas fa-hand-holding-medical stat-card-icon"></i>
+        </div>
+    </div>
+
+    <div class="stat-card stat-secondary">
+        <div class="stat-card-content">
+            <div class="stat-card-info">
+                <h3>{% trans 'Inventaires (30j)' %}</h3>
+                <p class="stat-value">{{ inventory_count|default:0 }}</p>
+            </div>
+            <i class="fas fa-warehouse stat-card-icon"></i>
+        </div>
+    </div>
+
+    <div class="stat-card stat-success">
+        <div class="stat-card-content">
+            <div class="stat-card-info">
+                <h3>{% trans 'Utilisateurs Actifs' %}</h3>
+                <p class="stat-value">{{ active_user_count|default:0 }}</p>
+            </div>
+            <i class="fas fa-user-md stat-card-icon"></i>
+        </div>
+    </div>
+
+    <div class="stat-card stat-danger">
+        <div class="stat-card-content">
+            <div class="stat-card-info">
+                <h3>{% trans 'Alertes Actives' %}</h3>
+                <p class="stat-value">{{ active_alert_count|default:0 }}</p>
+            </div>
+            <i class="fas fa-bell stat-card-icon"></i>
+        </div>
+    </div>
+</div>
+
+{{ block.super }}
 {% endblock %}

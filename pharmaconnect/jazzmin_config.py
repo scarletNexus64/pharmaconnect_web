@@ -92,7 +92,7 @@ JAZZMIN_SETTINGS = {
     "related_modal_active": False,
     
     # Custom CSS/JS
-    "custom_css": None,
+    "custom_css": "css/admin_custom.css",
     "custom_js": None,
     
     # Whether to display the side menu
@@ -100,7 +100,7 @@ JAZZMIN_SETTINGS = {
     
     # Thème
     "theme": "flatly",
-    "dark_mode_theme": "darkly",
+    "dark_mode_theme": None,  # Désactiver le dark mode
     
     # Navbar
     "navbar_small_text": False,
@@ -215,15 +215,15 @@ JAZZMIN_UI_TWEAKS = {
     "footer_small_text": False,
     "body_small_text": False,
     "brand_small_text": False,
-    "brand_colour": "navbar-primary",
-    "accent": "accent-primary",
-    "navbar": "navbar-primary navbar-dark",
+    "brand_colour": "navbar-white",
+    "accent": "accent-info",
+    "navbar": "navbar-white navbar-light",
     "no_navbar_border": False,
     "navbar_fixed": True,
     "layout_boxed": False,
     "footer_fixed": False,
     "sidebar_fixed": True,
-    "sidebar": "sidebar-dark-primary",
+    "sidebar": "sidebar-light-primary",
     "sidebar_nav_small_text": False,
     "sidebar_disable_expand": False,
     "sidebar_nav_child_indent": False,
@@ -231,7 +231,7 @@ JAZZMIN_UI_TWEAKS = {
     "sidebar_nav_legacy_style": False,
     "sidebar_nav_flat_style": False,
     "theme": "flatly",
-    "dark_mode_theme": "darkly",
+    "dark_mode_theme": None,  # Désactiver le dark mode
     "button_classes": {
         "primary": "btn-primary",
         "secondary": "btn-secondary",

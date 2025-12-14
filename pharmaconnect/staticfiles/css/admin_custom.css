@@ -1,0 +1,960 @@
+/* ========================================
+   PharmaConnect Admin - Thème Light Moderne
+   Responsive, accessible et professionnel
+   ======================================== */
+
+/* ========================================
+   1. BASE - Texte et couleurs générales
+   ======================================== */
+
+body,
+.main-sidebar,
+.content-wrapper,
+.main-header,
+.navbar,
+.sidebar,
+.card,
+.card-header,
+.card-body,
+.card-footer,
+.breadcrumb,
+.dropdown-menu,
+.nav-link {
+    color: #212529 !important;
+}
+
+/* Force le texte noir partout */
+* {
+    color: #212529;
+}
+
+/* Sauf pour les liens qui peuvent être bleus */
+a:not(.btn):not(.page-link):not(.dropdown-item) {
+    color: #007bff !important;
+}
+
+a:not(.btn):not(.page-link):not(.dropdown-item):hover {
+    color: #0056b3 !important;
+}
+
+/* ========================================
+   2. NAVBAR - En-tête
+   ======================================== */
+
+.main-header.navbar {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #dee2e6 !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+}
+
+.main-header .navbar-nav .nav-link {
+    color: #212529 !important;
+    font-weight: 500;
+}
+
+.main-header .navbar-nav .nav-link:hover {
+    color: #0056b3 !important;
+    background-color: #f8f9fa !important;
+}
+
+/* ========================================
+   3. SIDEBAR - Barre latérale
+   ======================================== */
+
+.main-sidebar {
+    background-color: #ffffff !important;
+    border-right: 1px solid #dee2e6 !important;
+    box-shadow: 2px 0 4px rgba(0,0,0,0.05) !important;
+}
+
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link,
+.sidebar-light-primary .nav-sidebar > .nav-item > .nav-link {
+    color: #212529 !important;
+    font-weight: 500;
+}
+
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link:hover,
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active,
+.sidebar-light-primary .nav-sidebar > .nav-item > .nav-link:hover,
+.sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
+    background-color: #e9ecef !important;
+    color: #0056b3 !important;
+}
+
+/* Logo et brand */
+.brand-link {
+    border-bottom: 1px solid #dee2e6 !important;
+    background-color: #ffffff !important;
+}
+
+.brand-link,
+.brand-text {
+    color: #212529 !important;
+    font-weight: 600;
+}
+
+/* Submenu */
+.nav-treeview > .nav-item > .nav-link {
+    color: #495057 !important;
+    padding-left: 2.5rem !important;
+}
+
+.nav-treeview > .nav-item > .nav-link:hover {
+    background-color: #e9ecef !important;
+    color: #0056b3 !important;
+}
+
+/* Icons */
+.nav-icon {
+    color: #6c757d !important;
+}
+
+.nav-link.active .nav-icon,
+.nav-link:hover .nav-icon {
+    color: #0056b3 !important;
+}
+
+/* ========================================
+   4. CONTENT WRAPPER - Zone de contenu
+   ======================================== */
+
+.content-wrapper {
+    background-color: #f8f9fa !important;
+}
+
+/* ========================================
+   5. CARDS ET BOXES - Conteneurs
+   ======================================== */
+
+.card,
+.box,
+.info-box {
+    background-color: #ffffff !important;
+    border: 1px solid #dee2e6 !important;
+    border-radius: 0.375rem !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
+}
+
+.card-header,
+.box-header {
+    background-color: #f8f9fa !important;
+    border-bottom: 1px solid #dee2e6 !important;
+    color: #212529 !important;
+    font-weight: 600;
+}
+
+.card-title,
+.box-title {
+    color: #212529 !important;
+    font-weight: 600;
+}
+
+/* Info boxes pour les statistiques */
+.info-box {
+    min-height: 90px;
+    padding: 0.75rem;
+}
+
+.info-box-icon {
+    border-radius: 0.375rem 0 0 0.375rem !important;
+}
+
+.info-box-text,
+.info-box-number {
+    color: #212529 !important;
+    display: block;
+}
+
+.info-box-text {
+    font-size: 0.875rem;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+.info-box-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Small boxes */
+.small-box {
+    border-radius: 0.375rem !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+}
+
+.small-box h3,
+.small-box p {
+    color: #ffffff !important;
+}
+
+.small-box .icon {
+    color: rgba(255,255,255,0.3) !important;
+}
+
+/* ========================================
+   6. TABLES - Tableaux de données
+   ======================================== */
+
+/* Table de base */
+.table {
+    color: #212529 !important;
+    background-color: #ffffff !important;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+/* En-têtes de tableau */
+.table thead th,
+#result_list thead th {
+    background-color: #f8f9fa !important;
+    color: #212529 !important;
+    border-bottom: 2px solid #dee2e6 !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    padding: 0.75rem !important;
+}
+
+/* Lignes du tableau - alternance claire */
+.table tbody tr,
+#result_list tbody tr {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+}
+
+/* Lignes paires - très légère alternance */
+.table tbody tr:nth-child(even),
+#result_list tbody tr:nth-child(even) {
+    background-color: #f9fafb !important;
+}
+
+/* Hover sur les lignes */
+.table tbody tr:hover,
+#result_list tbody tr:hover {
+    background-color: #e3f2fd !important;
+    cursor: pointer;
+}
+
+/* Cellules du tableau */
+.table tbody td,
+.table tbody th,
+#result_list tbody td,
+#result_list tbody th {
+    color: #212529 !important;
+    padding: 0.75rem !important;
+    vertical-align: middle;
+}
+
+/* Liens dans les tableaux */
+.table tbody td a,
+#result_list tbody td a {
+    color: #007bff !important;
+    font-weight: 500;
+}
+
+.table tbody td a:hover,
+#result_list tbody td a:hover {
+    color: #0056b3 !important;
+    text-decoration: underline;
+}
+
+/* Résultats vides */
+.table tbody tr.empty,
+#result_list tbody tr.empty {
+    background-color: #ffffff !important;
+}
+
+/* Checkboxes dans les tableaux */
+.table tbody input[type="checkbox"],
+#result_list tbody input[type="checkbox"] {
+    cursor: pointer;
+}
+
+/* Row selected */
+.table tbody tr.selected,
+#result_list tbody tr.selected {
+    background-color: #fff3cd !important;
+}
+
+/* ========================================
+   7. FORMS - Formulaires
+   ======================================== */
+
+.form-control,
+.form-select,
+select,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="datetime-local"],
+textarea {
+    background-color: #ffffff !important;
+    color: #212529 !important;
+    border: 1px solid #ced4da !important;
+    border-radius: 0.375rem !important;
+}
+
+.form-control:focus,
+.form-select:focus,
+select:focus,
+input:focus,
+textarea:focus {
+    border-color: #80bdff !important;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
+    outline: none !important;
+}
+
+/* Labels */
+label,
+.control-label,
+.form-label {
+    color: #212529 !important;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+/* Help text */
+.help-block,
+.form-text,
+.text-muted,
+.helptext {
+    color: #6c757d !important;
+    font-size: 0.875rem;
+}
+
+/* Required fields */
+.required label:after {
+    content: " *";
+    color: #dc3545;
+}
+
+/* ========================================
+   8. BUTTONS - Boutons
+   ======================================== */
+
+.btn {
+    border-radius: 0.375rem !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-primary {
+    background-color: #007bff !important;
+    border-color: #007bff !important;
+    color: #ffffff !important;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3 !important;
+    border-color: #004085 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,123,255,0.2) !important;
+}
+
+.btn-success {
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+    color: #ffffff !important;
+}
+
+.btn-success:hover {
+    background-color: #218838 !important;
+    border-color: #1e7e34 !important;
+}
+
+.btn-danger {
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+    color: #ffffff !important;
+}
+
+.btn-danger:hover {
+    background-color: #c82333 !important;
+    border-color: #bd2130 !important;
+}
+
+.btn-info {
+    background-color: #17a2b8 !important;
+    border-color: #17a2b8 !important;
+    color: #ffffff !important;
+}
+
+.btn-warning {
+    background-color: #ffc107 !important;
+    border-color: #ffc107 !important;
+    color: #212529 !important;
+}
+
+.btn-secondary {
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+    color: #ffffff !important;
+}
+
+/* ========================================
+   9. PAGINATION
+   ======================================== */
+
+.pagination {
+    margin-top: 1rem;
+}
+
+.pagination .page-link {
+    color: #007bff !important;
+    background-color: #ffffff !important;
+    border: 1px solid #dee2e6 !important;
+    padding: 0.5rem 0.75rem;
+}
+
+.pagination .page-link:hover {
+    background-color: #e9ecef !important;
+    color: #0056b3 !important;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff !important;
+    border-color: #007bff !important;
+    color: #ffffff !important;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #6c757d !important;
+    background-color: #ffffff !important;
+}
+
+/* ========================================
+   10. BREADCRUMB
+   ======================================== */
+
+.breadcrumb {
+    background-color: transparent !important;
+    color: #212529 !important;
+    padding: 0.75rem 0;
+}
+
+.breadcrumb-item {
+    color: #6c757d !important;
+}
+
+.breadcrumb-item a {
+    color: #007bff !important;
+}
+
+.breadcrumb-item.active {
+    color: #212529 !important;
+    font-weight: 600;
+}
+
+/* ========================================
+   11. DROPDOWN MENUS
+   ======================================== */
+
+.dropdown-menu {
+    background-color: #ffffff !important;
+    border: 1px solid #dee2e6 !important;
+    border-radius: 0.375rem !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+
+.dropdown-item {
+    color: #212529 !important;
+    padding: 0.5rem 1rem;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa !important;
+    color: #0056b3 !important;
+}
+
+.dropdown-divider {
+    border-top: 1px solid #dee2e6 !important;
+}
+
+/* ========================================
+   12. ALERTS ET MESSAGES
+   ======================================== */
+
+.alert {
+    border-radius: 0.375rem !important;
+    border-left: 4px solid;
+}
+
+.alert-success {
+    background-color: #d4edda !important;
+    border-color: #28a745 !important;
+    color: #155724 !important;
+}
+
+.alert-info {
+    background-color: #d1ecf1 !important;
+    border-color: #17a2b8 !important;
+    color: #0c5460 !important;
+}
+
+.alert-warning {
+    background-color: #fff3cd !important;
+    border-color: #ffc107 !important;
+    color: #856404 !important;
+}
+
+.alert-danger {
+    background-color: #f8d7da !important;
+    border-color: #dc3545 !important;
+    color: #721c24 !important;
+}
+
+/* Django messages */
+.messages .alert {
+    margin-bottom: 1rem;
+}
+
+/* ========================================
+   13. CHANGELIST FILTERS - Filtres
+   ======================================== */
+
+#changelist-filter {
+    background-color: #ffffff !important;
+    border-left: 1px solid #dee2e6 !important;
+    padding: 1rem;
+}
+
+#changelist-filter h2,
+#changelist-filter h3 {
+    color: #212529 !important;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.75rem;
+}
+
+#changelist-filter ul {
+    padding-left: 0;
+}
+
+#changelist-filter li {
+    list-style: none;
+    padding: 0.25rem 0;
+}
+
+#changelist-filter li a {
+    color: #007bff !important;
+    text-decoration: none;
+}
+
+#changelist-filter li a:hover {
+    color: #0056b3 !important;
+    text-decoration: underline;
+}
+
+#changelist-filter li.selected a {
+    color: #0056b3 !important;
+    font-weight: 700;
+}
+
+/* ========================================
+   14. ACTION BAR - Barre d'actions
+   ======================================== */
+
+.actions {
+    background-color: #f8f9fa !important;
+    padding: 1rem;
+    border-radius: 0.375rem !important;
+    margin-bottom: 1rem;
+}
+
+.actions label {
+    color: #212529 !important;
+    font-weight: 600;
+}
+
+.actions select {
+    margin: 0 0.5rem;
+}
+
+/* ========================================
+   15. FOOTER
+   ======================================== */
+
+.main-footer {
+    background-color: #ffffff !important;
+    border-top: 1px solid #dee2e6 !important;
+    color: #212529 !important;
+    padding: 1rem;
+}
+
+/* ========================================
+   16. LOGIN PAGE - Page de connexion
+   ======================================== */
+
+/* Fond de la page de login - IMPORTANT: doit surcharger le thème dark */
+body.login,
+body.login-page,
+html.login,
+html.login body {
+    background: #f8f9fa !important;
+    background-color: #f8f9fa !important;
+    min-height: 100vh !important;
+}
+
+/* Forcer le fond clair sur tous les conteneurs de la page de login */
+.login-page,
+.login-page .wrapper,
+.login-page .content-wrapper,
+body.login,
+body.login .wrapper,
+body.login .content-wrapper {
+    background: #f8f9fa !important;
+    background-color: #f8f9fa !important;
+}
+
+/* Alternative avec gradient si préféré */
+/*
+body.login,
+body.login-page {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+*/
+
+.login-box,
+.register-box {
+    background-color: #ffffff !important;
+    border-radius: 0.5rem !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2) !important;
+    overflow: hidden;
+}
+
+.login-card-body,
+.register-card-body,
+.card-body.login-card-body,
+.card-body.register-card-body {
+    background-color: #ffffff !important;
+    padding: 2.5rem !important;
+    color: #212529 !important;
+}
+
+.login-logo,
+.register-logo {
+    margin-bottom: 1.5rem;
+}
+
+.login-logo a,
+.register-logo a {
+    color: #212529 !important;
+    font-size: 2rem;
+    font-weight: 700;
+    text-shadow: none;
+}
+
+.login-logo a b,
+.register-logo a b {
+    color: #667eea !important;
+}
+
+.login-box-msg,
+.register-box-msg {
+    color: #212529 !important;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+/* Formulaire de login */
+.login-card-body .input-group,
+.register-card-body .input-group {
+    margin-bottom: 1rem;
+}
+
+.login-card-body input,
+.register-card-body input {
+    background-color: #f8f9fa !important;
+    border: 1px solid #dee2e6 !important;
+    color: #212529 !important;
+    padding: 0.75rem !important;
+    border-radius: 0.375rem !important;
+}
+
+.login-card-body input:focus,
+.register-card-body input:focus {
+    background-color: #ffffff !important;
+    border-color: #667eea !important;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25) !important;
+}
+
+.login-card-body input::placeholder,
+.register-card-body input::placeholder {
+    color: #6c757d !important;
+}
+
+/* Bouton de connexion */
+.login-card-body .btn-primary,
+.register-card-body .btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    border: none !important;
+    padding: 0.75rem 2rem !important;
+    font-weight: 600 !important;
+    border-radius: 0.375rem !important;
+    width: 100%;
+    transition: all 0.3s ease !important;
+}
+
+.login-card-body .btn-primary:hover,
+.register-card-body .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4) !important;
+}
+
+/* Checkbox "Se souvenir de moi" */
+.login-card-body .icheck-primary,
+.register-card-body .icheck-primary {
+    color: #212529 !important;
+}
+
+.login-card-body label,
+.register-card-body label {
+    color: #212529 !important;
+}
+
+/* Liens */
+.login-card-body a,
+.register-card-body a {
+    color: #667eea !important;
+}
+
+.login-card-body a:hover,
+.register-card-body a:hover {
+    color: #764ba2 !important;
+    text-decoration: underline;
+}
+
+/* Message d'erreur */
+.login-card-body .errornote,
+.login-card-body .errorlist,
+.register-card-body .errornote,
+.register-card-body .errorlist {
+    background-color: #f8d7da !important;
+    color: #721c24 !important;
+    border: 1px solid #f5c6cb !important;
+    border-radius: 0.375rem !important;
+    padding: 0.75rem !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Input group icons */
+.login-card-body .input-group-text,
+.register-card-body .input-group-text {
+    background-color: #f8f9fa !important;
+    border: 1px solid #dee2e6 !important;
+    color: #6c757d !important;
+}
+
+/* ========================================
+   17. DATE/TIME WIDGETS
+   ======================================== */
+
+.datetimeshortcuts a {
+    color: #007bff !important;
+    margin-left: 0.5rem;
+}
+
+.datetimeshortcuts a:hover {
+    color: #0056b3 !important;
+}
+
+/* ========================================
+   18. FILE UPLOADS
+   ======================================== */
+
+.file-upload,
+input[type="file"] {
+    color: #212529 !important;
+}
+
+.related-widget-wrapper {
+    color: #212529 !important;
+}
+
+/* ========================================
+   19. SCROLLBARS - Barres de défilement
+   ======================================== */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* ========================================
+   20. RESPONSIVE DESIGN
+   ======================================== */
+
+/* Tablettes (768px - 991px) */
+@media (max-width: 991px) {
+    .main-sidebar {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        z-index: 1050;
+        transition: left 0.3s ease-in-out;
+    }
+
+    .sidebar-open .main-sidebar {
+        left: 0;
+    }
+
+    .content-wrapper {
+        margin-left: 0 !important;
+    }
+
+    /* Overlay quand la sidebar est ouverte */
+    body.sidebar-open::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1049;
+    }
+
+    /* Masquer les filtres sur mobile */
+    #changelist-filter {
+        display: none;
+    }
+
+    /* Tables responsive */
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 767px) {
+    /* Stack les info boxes */
+    .info-box {
+        margin-bottom: 1rem;
+    }
+
+    /* Réduire le padding */
+    .card-body,
+    .box-body {
+        padding: 1rem !important;
+    }
+
+    /* Tableaux scrollables */
+    #result_list {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    /* Boutons pleine largeur sur mobile */
+    .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .btn-group .btn {
+        width: auto;
+    }
+
+    /* Formulaires */
+    .form-row {
+        flex-direction: column;
+    }
+
+    /* Pagination */
+    .pagination {
+        font-size: 0.875rem;
+    }
+
+    .pagination .page-link {
+        padding: 0.375rem 0.5rem;
+    }
+}
+
+/* Très petits écrans (< 576px) */
+@media (max-width: 575px) {
+    .main-header .navbar-nav {
+        flex-direction: column;
+    }
+
+    .card-header h3,
+    .box-header h3 {
+        font-size: 1rem;
+    }
+
+    .info-box-number {
+        font-size: 1.25rem !important;
+    }
+}
+
+/* ========================================
+   21. PRINT STYLES - Impression
+   ======================================== */
+
+@media print {
+    .main-sidebar,
+    .main-header,
+    .main-footer,
+    .actions,
+    #changelist-filter {
+        display: none !important;
+    }
+
+    .content-wrapper {
+        margin: 0 !important;
+    }
+
+    .table tbody tr:hover {
+        background-color: transparent !important;
+    }
+}
+
+/* ========================================
+   22. ACCESSIBILITY - Accessibilité
+   ======================================== */
+
+/* Focus visible pour la navigation au clavier */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid #007bff !important;
+    outline-offset: 2px !important;
+}
+
+/* Skip link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #007bff;
+    color: white;
+    padding: 8px;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+}
